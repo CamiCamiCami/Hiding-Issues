@@ -18,7 +18,12 @@ public class SecurityPercentageUI : MonoBehaviour
         {
             throw new Exception("SecurityPercentageUI: Object must have a RectTransform component");
         }
+        transform.anchorMin = Vector2.one; 
+        transform.anchorMax = Vector2.one;
+        transform.pivot = new Vector2(1, 0);
+
         text = this.AddComponent<TextMeshProUGUI>();
+        text.autoSizeTextContainer = true;
         text.text = "";
     }
 
