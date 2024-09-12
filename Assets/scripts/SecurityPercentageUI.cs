@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(RectTransform))]
 public class SecurityPercentageUI : MonoBehaviour
@@ -18,13 +19,13 @@ public class SecurityPercentageUI : MonoBehaviour
         {
             throw new Exception("SecurityPercentageUI: Object must have a RectTransform component");
         }
-        transform.anchorMin = Vector2.one; 
-        transform.anchorMax = Vector2.one;
-        transform.pivot = new Vector2(1, 0);
 
         text = this.AddComponent<TextMeshProUGUI>();
-        text.autoSizeTextContainer = true;
         text.text = "";
+
+        transform.anchorMin = Vector2.one;
+        transform.anchorMax = Vector2.one;
+        transform.pivot = new Vector2(1, 0);
     }
 
     public void SetSecurityPercentage(int newPercentage)

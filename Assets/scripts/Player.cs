@@ -127,12 +127,8 @@ public class Player : MonoBehaviour
     {
         if (currentRoom == room)
         {
-            Debug.Log("BruhBruh");
             overlay.SetSecurityPercentage(room.GetSecurityPercentage());
-        } else
-        {
-            Debug.Log("Bruh");
-        } 
+        }
     }
 
     public bool IsHiding()

@@ -25,15 +25,36 @@ public class PlayerLookAt : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(CameraCenter, CameraComponent.transform.forward, out hit, 10f) && hit.collider.gameObject.TryGetComponent<PuzzleInteractable>(out var interact))
         {
-            interactable = interact;
+            SetInteractable(interact);
         } else
         {
-            interactable = null;
+            SetInteractable(null);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (interactable != null && Input.GetKeyDown(KeyCode.E))
         {
             interactable.WhenInteracted();
         }
     }
+
+    private void SetInteractable(PuzzleInteractable other)
+    {
+        if (interactable == other)
+        {
+            return;
+        }
+
+        if (interactable != null)
+        {
+            interactable.WhenUnselected();
+        }
+
+        if (other != null)
+        {
+            other.WhenSelected();
+        }
+
+        interactable = other;
+    }
+
 }

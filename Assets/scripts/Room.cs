@@ -10,7 +10,6 @@ public class Room : MonoBehaviour
     public BoxCollider box;
 
     private bool isPercentageRevealed = false;
-    private bool isRevealed = false;
     private bool __reveal_next_iteration = false;
 
     // Start is called before the first frame update
@@ -57,7 +56,6 @@ public class Room : MonoBehaviour
 
     public void RevealSecurityPercentage()
     {
-        Debug.Log("lol");
         isPercentageRevealed = true;
         __reveal_next_iteration = true;
     }

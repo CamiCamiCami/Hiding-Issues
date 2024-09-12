@@ -9,10 +9,6 @@ public class BathroomPiecesPuzzle : Puzzle
     public GameObject SinkModel;
     public GameObject ShowerModel;
 
-    private PuzzleInteractable toiletInteractable;
-    private PuzzleInteractable sinkInteractable;
-    private PuzzleInteractable showerInteractable;
-
     private bool toiletInteracted = false;
     private bool sinkInteracted = false;
     private bool showerInteracted = false;
@@ -21,9 +17,9 @@ public class BathroomPiecesPuzzle : Puzzle
     void Start()
     {
         base.StartPuzzle();
-        toiletInteractable = PuzzleInteractable.AddPuzzleInteractable(ToiletModel, this);
-        sinkInteractable = PuzzleInteractable.AddPuzzleInteractable(SinkModel, this);
-        showerInteractable = PuzzleInteractable.AddPuzzleInteractable(ShowerModel, this);
+        PuzzleInteractable.AddPuzzleInteractable(ToiletModel, this);
+        PuzzleInteractable.AddPuzzleInteractable(SinkModel, this);
+        PuzzleInteractable.AddPuzzleInteractable(ShowerModel, this);
     }
 
     public override void HandleComponentInteracted(PuzzleInteractable interactable)
