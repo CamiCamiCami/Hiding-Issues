@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 [RequireComponent(typeof(Canvas))]
 public class PlayerOverlay : MonoBehaviour
@@ -12,16 +11,19 @@ public class PlayerOverlay : MonoBehaviour
 
     private Fade fadeComponent;
     private SecurityPercentageUI securityComponent;
+    private HideOpcionText hidePopUp;
     // Start is called before the first frame update
     void Start()
     {
         Canvas canvas = this.GetComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+
         CanvasScaler scaler = this.AddComponent<CanvasScaler>();
         GraphicRaycaster raycaster = this.AddComponent<GraphicRaycaster>();
 
         fadeComponent = this.GetComponentInChildren<Fade>();
         securityComponent = this.GetComponentInChildren<SecurityPercentageUI>();
+        hidePopUp = this.GetComponentInChildren<HideOpcionText>();
     }
     public void Fade()
     {
@@ -48,5 +50,15 @@ public class PlayerOverlay : MonoBehaviour
     public void VoidSecurityPercentage()
     {
         securityComponent.VoidSecurityPercentage();
+    }
+
+    public void ShowHidePopUp()
+    {
+        hidePopUp.ShowOption();
+    }
+
+    public void ResetHidePopUp()
+    {
+        hidePopUp.HideOption();
     }
 }

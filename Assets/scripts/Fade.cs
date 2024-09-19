@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(RectTransform))]
 public class Fade : MonoBehaviour
 {
 
@@ -13,7 +14,7 @@ public class Fade : MonoBehaviour
     void Start()
     {
         // Set RectTransform to fullscreen
-        RectTransform rect = this.AddComponent<RectTransform>();
+        RectTransform rect = this.GetComponent<RectTransform>();
         rect.anchorMin = Vector2.zero;
         rect.anchorMax = Vector2.one;
         rect.sizeDelta = Vector2.zero;

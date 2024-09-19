@@ -1,19 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
 
-    private float speed = 5f;
-
-    private CharacterController cc;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        this.cc = this.GetComponent<CharacterController>();
-    }
+    public float Speed = 5f;
+    public CharacterController cc;
 
     // Update is called once per frame
     void Update()
@@ -26,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         new_movement = this.transform.TransformDirection(new_movement);
         new_movement.y = 0;
 
-        cc.Move(new_movement * speed * Time.deltaTime);
+        cc.Move(new_movement * Speed * Time.deltaTime);
 
     }
 

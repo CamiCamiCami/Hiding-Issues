@@ -25,10 +25,9 @@ public class Room : MonoBehaviour
         Debug.Log(other.name);
         Player player = other.GetComponentInParent<Player>();
 
-        Debug.Log("poteadilla " + player.name);
-
         if (player != null)
         {
+            Debug.Log("poteadilla " + player.name);
             player.EnteredRoom(this);
         }
     }

@@ -2,55 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
+[RequireComponent(typeof(RectTransform))]
 public class HideOpcionText : MonoBehaviour
 {
-    public Canvas canvas;
 
+    public string HidePopUpMessage = "Press H to hide";
+
+    private TextMeshProUGUI text;
     // Start is called before the first frame update
     void Start()
     {
-        // Si el canvas no esta asignado, obtenemos el primero que encontremos en la escena
-        if (canvas == null)
-        {
-            canvas = FindObjectOfType<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceCamera;
-        }
 
         // Crear un nuevo objeto de texto dentro del Canvas
-        GameObject nuevoTextoObj = new GameObject("TextoMeshPro");
-        nuevoTextoObj.transform.SetParent(canvas.transform);
-
-        // Agregar el componente TextMeshPro al objeto recien creado
-        TextMeshProUGUI textMeshPro = nuevoTextoObj.AddComponent<TextMeshProUGUI>();
-
+        text = this.AddComponent<TextMeshProUGUI>();
         // Configurar las propiedades del TextMeshPro
-        textMeshPro.text = "Press H to hide";
-        textMeshPro.fontSize = 36;
-        textMeshPro.color = Color.white;
+        text.text = HidePopUpMessage;
+        text.fontSize = 36;
+        text.color = Color.white;
 
         // Ajustar la posicion del texto dentro del Canvas
-        RectTransform rectTransform = textMeshPro.GetComponent<RectTransform>();
+        RectTransform rectTransform = this.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(500, 100); // Tamanio del rectangulo
         rectTransform.anchoredPosition = new Vector2(0, 0); // Centrado en la pantalla
 
-        canvas.gameObject.SetActive(false);
+        text.enabled = false;
     }
 
-    public void Show_Option ()
+    public void ShowOption ()
     {
-        if (canvas != null)
-        {
-            canvas.gameObject.SetActive(true);
-        }
+        text.enabled = true;
     }
 
-    public void Hide_Option ()
+    public void HideOption ()
     {
-        if (canvas != null)
-        {
-            canvas.gameObject.SetActive(false);
-        }
+        text.enabled = false;
     }
 
 }
