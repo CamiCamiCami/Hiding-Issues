@@ -27,6 +27,7 @@ TagManager:
   - Ground
   - move
   - still
+  - Ligth
   layers:
   - Default
   - TransparentFX

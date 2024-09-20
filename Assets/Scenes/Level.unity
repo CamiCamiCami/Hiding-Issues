@@ -3573,7 +3573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 68141414}
   m_Layer: 0
-  m_Name: elemento1 (5)
+  m_Name: Lamp5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7855,7 +7855,7 @@ GameObject:
   - component: {fileID: 219788800}
   m_Layer: 0
   m_Name: luz5
-  m_TagString: luz5
+  m_TagString: Ligth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14761,7 +14761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &406965699
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18966,7 +18966,7 @@ GameObject:
   m_Component:
   - component: {fileID: 560949227}
   m_Layer: 0
-  m_Name: elemento1 (7)
+  m_Name: Lamp7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19110,7 +19110,7 @@ GameObject:
   - component: {fileID: 590220404}
   m_Layer: 0
   m_Name: luz8
-  m_TagString: luz8
+  m_TagString: Ligth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19788,7 +19788,7 @@ GameObject:
   m_Component:
   - component: {fileID: 624360955}
   m_Layer: 0
-  m_Name: elemento1 (2)
+  m_Name: Lamp2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24132,7 +24132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 728018276}
   m_Layer: 0
-  m_Name: elemento1 (6)
+  m_Name: Lamp6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25355,7 +25355,7 @@ GameObject:
   - component: {fileID: 736441540}
   - component: {fileID: 736441539}
   m_Layer: 0
-  m_Name: Boton
+  m_Name: Note
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25373,7 +25373,8 @@ Transform:
   m_LocalPosition: {x: 0.627, y: -0.60599995, z: -0.091}
   m_LocalScale: {x: 0.7295043, y: 0.050194006, z: 0.4875062}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1173532398}
   m_Father: {fileID: 977728065}
   m_LocalEulerAnglesHint: {x: 0, y: -45.42, z: 0}
 --- !u!114 &736441539
@@ -27532,7 +27533,7 @@ GameObject:
   - component: {fileID: 801292798}
   m_Layer: 0
   m_Name: luz6
-  m_TagString: luz6
+  m_TagString: Ligth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29707,7 +29708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 879581313}
   m_Layer: 0
-  m_Name: elemento1 (4)
+  m_Name: Lamp4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30843,7 +30844,7 @@ GameObject:
   - component: {fileID: 926746268}
   m_Layer: 0
   m_Name: luz4
-  m_TagString: luz4
+  m_TagString: Ligth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37689,7 +37690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1068366640}
   m_Layer: 0
-  m_Name: elemento1 (1)
+  m_Name: Lamp1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39356,7 +39357,7 @@ GameObject:
   - component: {fileID: 1155072437}
   m_Layer: 0
   m_Name: luz2
-  m_TagString: luz2
+  m_TagString: Ligth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40086,7 +40087,7 @@ RectTransform:
   m_Children:
   - {fileID: 1646911123}
   - {fileID: 406965699}
-  m_Father: {fileID: 1299110181}
+  m_Father: {fileID: 736441538}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -45714,7 +45715,6 @@ Transform:
   m_Children:
   - {fileID: 601871931}
   - {fileID: 977728065}
-  - {fileID: 1173532398}
   - {fileID: 1587562540}
   m_Father: {fileID: 1179078264}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58871,7 +58871,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.979, y: -0.55, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 963991876}
@@ -59161,7 +59161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1646911121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72393,7 +72393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2001462215}
   m_Layer: 0
-  m_Name: elemento1 (3)
+  m_Name: Lamp3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72426,7 +72426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2002372998}
   m_Layer: 0
-  m_Name: elemento1
+  m_Name: Lamp0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73147,7 +73147,7 @@ GameObject:
   - component: {fileID: 2029675412}
   m_Layer: 0
   m_Name: luz7
-  m_TagString: luz7
+  m_TagString: Ligth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74268,7 +74268,7 @@ GameObject:
   - component: {fileID: 2053123580}
   m_Layer: 0
   m_Name: luz3
-  m_TagString: luz3
+  m_TagString: Ligth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74770,7 +74770,7 @@ GameObject:
   - component: {fileID: 2063702993}
   m_Layer: 0
   m_Name: luz1
-  m_TagString: luz1
+  m_TagString: Ligth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80610,12 +80610,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  _SortingLayer: 0
-  _SortingLayerID: 0
-  _SortingOrder: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 4355513808748019617}
   m_maskType: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
 --- !u!1 &4395135366534418177
 GameObject:
   m_ObjectHideFlags: 0
@@ -84377,7 +84377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
