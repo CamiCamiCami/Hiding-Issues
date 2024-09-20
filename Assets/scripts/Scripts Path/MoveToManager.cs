@@ -26,7 +26,7 @@ public class MoveToManager : MonoBehaviour
         if (current_step <= n) {
 
             Transform current_transform = this.transform;
-            Debug.Log(current_step.ToString());
+            //Debug.Log(current_step.ToString());
             Transform target_transform = monster_path.transform.Find(current_step.ToString());
             this.transform.position = Vector3.Lerp(current_transform.position, target_transform.position, Time.deltaTime * speed);
 
