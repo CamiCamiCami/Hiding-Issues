@@ -27,6 +27,7 @@ TagManager:
   - Ground
   - move
   - still
+  - opciones
   layers:
   - Default
   - TransparentFX

@@ -33,6 +33,7 @@ public class PlayerCamera : MonoBehaviour
 
         player.Rotate(Vector3.up * inputX);
 
+        /*
         if (Input.GetKeyDown(KeyCode.LeftShift)) {
 
             locked = !locked;
@@ -50,6 +51,7 @@ public class PlayerCamera : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
 
         }
+        */
        
     }
 }

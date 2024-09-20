@@ -13,12 +13,14 @@ public enum Character
     Walter
 }
 
+
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(CapsuleCollider))]
 public class Player : MonoBehaviour
 {
 
     public Character character;
+    public Opciones pantallaOpciones2;
 
 
     [Header("First Person Camera")]
@@ -65,6 +67,13 @@ public class Player : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            pantallaOpciones2.MostrarOpciones();
+        }
+
 
         if(canHide && Input.GetKeyDown(KeyCode.H)) 
         { 
