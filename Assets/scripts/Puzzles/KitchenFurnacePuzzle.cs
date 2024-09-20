@@ -20,8 +20,8 @@ public class KitchenFurnacePuzzle : Puzzle
     public GameObject[] StoveButtons = new GameObject[4];
     public GameObject CheckButton;
 
-    public int[] correctCombination = new int[4];
-    public int[] currentCombination = new int[4];
+    private int[] correctCombination = new int[4];
+    private int[] currentCombination = new int[4];
     private Canvas noteCanvas;
 
     // Start is called before the first frame update
@@ -83,21 +83,9 @@ public class KitchenFurnacePuzzle : Puzzle
         }
     }
 
-    private bool lookingAtNote = false;
     private void HandleNoteInteracted(Player player)
     {
-        if (lookingAtNote)
-        {
-            player.Mobilize();
-            noteCanvas.enabled = false;
-            lookingAtNote = false;
-        }
-        else
-        {
-            player.Immobilize();
-            noteCanvas.enabled = true;
-            lookingAtNote = true;
-        }
+        player.DisplayCanvas(noteCanvas);
     }
 
     public override void HandleComponentInteracted(PuzzleInteractable interactable, Player player)

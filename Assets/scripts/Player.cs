@@ -20,10 +20,8 @@ public class Player : MonoBehaviour
 
     public Character character;
 
-
     [Header("First Person Camera")]
-    public float SensibilityX = 250;
-    public float SensibilityY = 250;
+    public float Sensibility = 250;
 
     [Header("Player Movement")]
     public float Speed = 5f;
@@ -31,39 +29,38 @@ public class Player : MonoBehaviour
     [Header("Player Look At")]
     public Camera cam;
 
+
     private Room currentRoom;
     private PlayerOverlay overlay;
+    private PlayerCamera playerCamera;
+    private PlayerMovement playerMovement;
+    private PlayerLookAt playerLookAt;
     private bool hiding = false;
     private bool canHide = false;
+    private bool isLookingAtCanvas = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        //PlayerCamera cameraManager = this.AddComponent<PlayerCamera>();
-        //cameraManager.sensibilityX = SensibilityX;
-        //cameraManager.sensibilityY = SensibilityY;
-        //cameraManager.Camera = this.GetComponentInChildren<SnapCamera>().gameObject; //Agarra el snap que ata a la camara
-
-        PlayerMovement playerMovement = this.AddComponent<PlayerMovement>();
+        playerMovement = this.AddComponent<PlayerMovement>();
         playerMovement.Speed = Speed;
         playerMovement.cc = this.GetComponent<CharacterController>();
 
-        PlayerLookAt playerLookAt = this.AddComponent<PlayerLookAt>();
+        playerLookAt = this.AddComponent<PlayerLookAt>();
         playerLookAt.CameraComponent = cam;
 
-        overlay = this.GetComponentInChildren<PlayerOverlay>();
+        playerCamera = this.AddComponent<PlayerCamera>();
+        playerCamera.cameraTransform = cam.transform;
+        playerCamera.mouseSensitivity = Sensibility;
 
-        return;
+        overlay = this.GetComponentInChildren<PlayerOverlay>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //esto es para probar el reset
-        if(Input.GetKeyDown(KeyCode.M)) {
-            SceneManager.LoadScene("GameOver");
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+        if (isLookingAtCanvas && Input.GetKeyDown(KeyCode.Escape)) {
+            this.ExitCanvas();
         }
 
         if(canHide && Input.GetKeyDown(KeyCode.H)) 
@@ -173,6 +170,26 @@ public class Player : MonoBehaviour
     {
         canHide = false;
         overlay.ResetHidePopUp();
+    }
+
+    Canvas canvasLookingAt = null;
+    public void DisplayCanvas(Canvas canvas) {
+        isLookingAtCanvas = true;
+        playerCamera.LockCamera();
+        playerMovement.DisableMovement();
+        playerLookAt.DisableInteraction();
+        canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        canvas.enabled = true;
+        canvasLookingAt = canvas;
+    }
+
+    private void ExitCanvas() {
+        isLookingAtCanvas = false;
+        playerCamera.FreeCamera();
+        playerMovement.EnableMovement();
+        playerLookAt.EnableInteraction();
+        canvasLookingAt.enabled = false;
+        canvasLookingAt = null;
     }
 
 }
