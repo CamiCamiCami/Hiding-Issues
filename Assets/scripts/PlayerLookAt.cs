@@ -11,11 +11,13 @@ public class PlayerLookAt : MonoBehaviour
 
     private Vector3 ScreenCentre;
     private PuzzleInteractable interactable = null;
+    private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
         ScreenCentre = new Vector3(Screen.width / 2, Screen.height / 2, CameraComponent.nearClipPlane);
+        player = this.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class PlayerLookAt : MonoBehaviour
 
         if (interactable != null && Input.GetKeyDown(KeyCode.E))
         {
-            interactable.WhenInteracted();
+            interactable.WhenInteracted(player);
         }
     }
 

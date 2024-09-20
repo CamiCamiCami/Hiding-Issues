@@ -22,7 +22,7 @@ public class HallClockPuzzle : Puzzle
         currentMinute = ((int)Mathf.Floor(Minute.transform.eulerAngles.x / 30f) + 45) % 60;
     }
 
-    public override void HandleComponentInteracted(PuzzleInteractable interactable)
+    public override void HandleComponentInteracted(PuzzleInteractable interactable, Player player)
     {
         GameObject useful_interact = interactable.transform.parent.gameObject;
         if (useful_interact == Minute)

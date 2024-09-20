@@ -7,17 +7,17 @@ using UnityEngine;
 public abstract class Puzzle : MonoBehaviour
 {
 
-    private Room room;
+    protected Room room;
 
     protected void StartPuzzle()
     {
         room = this.GetComponent<Room>();
     }
 
-    protected void OnSolve()
+    protected virtual void OnSolve()
     {
         room.RevealSecurityPercentage();
     }
 
-    public abstract void HandleComponentInteracted(PuzzleInteractable interactable);
+    public abstract void HandleComponentInteracted(PuzzleInteractable interactable, Player player);
 }

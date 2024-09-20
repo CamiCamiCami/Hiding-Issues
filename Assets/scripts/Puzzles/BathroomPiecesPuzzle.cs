@@ -22,7 +22,7 @@ public class BathroomPiecesPuzzle : Puzzle
         PuzzleInteractable.AddPuzzleInteractable(ShowerModel, this);
     }
 
-    public override void HandleComponentInteracted(PuzzleInteractable interactable)
+    public override void HandleComponentInteracted(PuzzleInteractable interactable, Player player)
     {
         Debug.Log("");
         GameObject interacted_obj = interactable.gameObject;

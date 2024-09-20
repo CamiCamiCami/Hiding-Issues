@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class PuzzleInteractable : MonoBehaviour
 {
     public Puzzle ReportBackTo;
@@ -20,9 +21,9 @@ public class PuzzleInteractable : MonoBehaviour
         outline.enabled = false;
     }
 
-    public void WhenInteracted()
+    public void WhenInteracted(Player player)
     {
-        ReportBackTo.HandleComponentInteracted(this);
+        ReportBackTo.HandleComponentInteracted(this, player);
     }
 
     public void WhenSelected()
