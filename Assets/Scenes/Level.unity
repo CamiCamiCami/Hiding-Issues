@@ -27580,6 +27580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HidingTime: 1e+17
   Players: {fileID: 767572219}
+  playerPrefab: {fileID: 6356710685193369760, guid: c523c02b6a624ac4786a5810d0ae70a7, type: 3}
 --- !u!4 &808282036
 Transform:
   m_ObjectHideFlags: 0
@@ -27936,6 +27937,7 @@ GameObject:
   - component: {fileID: 814887762}
   - component: {fileID: 814887764}
   - component: {fileID: 814887763}
+  - component: {fileID: 814887765}
   m_Layer: 0
   m_Name: Bedroom
   m_TagString: Untagged
@@ -27998,6 +28000,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 15.960438, y: 5.059267, z: 6.037505}
   m_Center: {x: -7.48022, y: 0.6968966, z: -2.5187526}
+--- !u!114 &814887765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814887761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d9a7d28fc82594d917aa32890a5573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scene: {fileID: 102900000, guid: 213e8b8570186a241951fbc2d7b4813b, type: 3}
+  Ball: {fileID: 379293981}
 --- !u!43 &838152477
 Mesh:
   m_ObjectHideFlags: 0
@@ -58742,7 +58758,7 @@ MonoBehaviour:
   character: 0
   Sensibility: 5
   Speed: 5
-  cam: {fileID: 322067869}
+  cam: {fileID: 0}
 --- !u!1 &1637977340
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
 
     public double HidingTime;
     public GameObject Players;
-    private List<Player> PlayerList = new List<Player>();
+    public GameObject playerPrefab;
+    public List<Player> PlayerList { get; private set; } = new List<Player>();
     private double RemainingTime;
     private bool IsTimeOver;
 
@@ -60,6 +61,15 @@ public class GameManager : MonoBehaviour
                     Debug.Log(player + " (:");
                 }
             }
+        }
+    }
+
+    public void PreparePlayers(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject player = Instantiate(playerPrefab);
+            player.transform.SetParent(Players.transform);
         }
     }
 
