@@ -27,6 +27,7 @@ TagManager:
   - Ground
   - move
   - still
+  - Boss
   layers:
   - Default
   - TransparentFX
