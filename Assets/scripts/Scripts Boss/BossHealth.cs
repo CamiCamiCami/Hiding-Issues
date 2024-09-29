@@ -45,6 +45,6 @@ public class BossHealth : MonoBehaviour
     void WinGame()
     {
         Debug.Log("El jefe ha sido derrotado. Cargando la escena de victoria...");
-            SceneManager.LoadScene("JEFE ABATIDO"); 
+        UnityEngine.SceneManagement.SceneManager.LoadScene("JEFE ABATIDO"); 
     }
 }

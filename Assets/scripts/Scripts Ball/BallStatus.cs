@@ -26,14 +26,14 @@ public class BallStatus : MonoBehaviour
 
         if (colission.gameObject.CompareTag("killer")) {
 
-            SceneManager.LoadScene("Level");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Level");
             this.alive = false;
 
         }
 
         if (colission.gameObject.CompareTag("winner")) {
 
-            SceneManager.LoadScene("Level");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Level");
             this.winner = true;
 
         }

@@ -48,6 +48,6 @@ public class PlayerHealth : MonoBehaviour
     void LoseGame()
     {
         Debug.Log("Salud llegó a 0. Cargando la escena de perder...");
-        SceneManager.LoadScene("GameOver"); 
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver"); 
     }
 }

@@ -18,7 +18,7 @@ public class TotemBallManager : MonoBehaviour
 
     private void OnMouseDown () {
 
-        SceneManager.LoadScene("Ball Puzzle");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Ball Puzzle");
 
     }
 

@@ -8,7 +8,7 @@ public class Rotacion : MonoBehaviour
 {
 
     public ClockManager cm;
-    public GameManager gm;
+    public RoundManager gm;
 
     // Start is called before the first frame update
     void Start()

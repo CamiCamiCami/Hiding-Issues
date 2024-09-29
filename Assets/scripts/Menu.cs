@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     public void Jugar(string jueguito){
-        SceneManager.LoadScene(jueguito);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(jueguito);
     }
     
     public void Salir(){

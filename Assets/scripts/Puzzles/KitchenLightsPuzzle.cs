@@ -38,8 +38,7 @@ public class KitchenLightsPuzzle : Puzzle
         if (solved) {
             return;
         }
-        Debug.Log(Input.text);
-        Debug.Log(solution.ToString());
+
         if (Input.text == solution.ToString()) {
             solved = true;
             base.OnSolve();

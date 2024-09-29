@@ -21,7 +21,7 @@ public class TotemParedManager : MonoBehaviour
 
         Debug.Log("potencio");
 
-        SceneManager.LoadScene("Pared Puzzle");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Pared Puzzle");
 
     }
 

@@ -29,7 +29,7 @@ public class BedroomBallPuzzle : Puzzle
 
     public override void HandleComponentInteracted(PuzzleInteractable interactable, Player player)
     {
-        SceneManager.LoadScene(Scene.name);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(Scene.name);
     }
 
 }

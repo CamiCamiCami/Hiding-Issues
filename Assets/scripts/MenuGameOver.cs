@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class MenuGameOver : MonoBehaviour
 {
     public void IrAlMenu(string menu){
-        SceneManager.LoadScene(menu);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(menu);
     }
 
     public void restart(string jueguito){
-        SceneManager.LoadScene(jueguito);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(jueguito);
         Debug.Log("Reseteando ando");
     }
 }
