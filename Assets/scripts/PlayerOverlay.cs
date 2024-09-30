@@ -39,7 +39,6 @@ public class PlayerOverlay : MonoBehaviour
     {
         if (newPercentage.HasValue)
         {
-            Debug.Log("hi" + newPercentage);
             securityComponent.SetSecurityPercentage(newPercentage.Value);
         } else
         {

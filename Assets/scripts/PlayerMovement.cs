@@ -6,8 +6,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float Speed = 5f;
+    public float Speed;
     public CharacterController cc;
+    public float Gravity;
 
     private bool canMove = true;
 
@@ -21,11 +22,13 @@ public class PlayerMovement : MonoBehaviour
         float z = Input.GetAxisRaw("Vertical");
         
         Vector3 new_movement = new Vector3(x, 0, z);
+        new_movement *= Speed * Time.deltaTime;
+        new_movement.y = -Gravity;
 
         new_movement = this.transform.TransformDirection(new_movement);
-        new_movement.y = 0;
+        
 
-        cc.Move(new_movement * Speed * Time.deltaTime);
+        cc.Move(new_movement);
 
     }
 

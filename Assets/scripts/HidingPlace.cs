@@ -19,7 +19,7 @@ public class HidingPlace : MonoBehaviour
     {
         if (other.TryGetComponent<Player>(out Player player))
         {
-            player.CanHide();
+            player.EnableHide();
             Debug.Log("Me com� un mueble.");
         } 
     }
@@ -28,7 +28,7 @@ public class HidingPlace : MonoBehaviour
     {
         if (other.TryGetComponent<Player>(out Player player))
         {
-            player.CannotHide();
+            player.DisableHide();
             Debug.Log("Me desescond�.");
         }
     }

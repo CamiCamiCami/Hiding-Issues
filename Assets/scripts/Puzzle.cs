@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Room))]
 public abstract class Puzzle : MonoBehaviour
 {
-
+    public bool isSolved = false;
     protected Room room;
 
     protected void StartPuzzle()
@@ -16,7 +16,12 @@ public abstract class Puzzle : MonoBehaviour
 
     protected virtual void OnSolve()
     {
-        room.RevealSecurityPercentage();
+        isSolved = true;
+    }
+
+    public virtual string getName()
+    {
+        return this.GetType().Name;
     }
 
     public abstract void HandleComponentInteracted(PuzzleInteractable interactable, Player player);

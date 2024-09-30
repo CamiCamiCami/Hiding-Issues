@@ -18,7 +18,7 @@ public class BallStatus : MonoBehaviour
     void Update()
     {
         
-        Debug.Log(this.alive + " " + this.winner);
+        //Debug.Log(this.alive + " " + this.winner);
 
     }
 

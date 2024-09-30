@@ -366,7 +366,8 @@ MonoBehaviour:
   character: 0
   Sensibility: 5
   Speed: 5
-  cam: {fileID: 0}
+  Gravity: 0.001
+  cam: {fileID: 4310520092465347218}
 --- !u!1 &8698821304593973909
 GameObject:
   m_ObjectHideFlags: 0

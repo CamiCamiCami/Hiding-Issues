@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class TotemBallManager : MonoBehaviour
 {
+
+    public SceneAsset ballScene;
+
     void Start()
     {
         
@@ -18,7 +21,7 @@ public class TotemBallManager : MonoBehaviour
 
     private void OnMouseDown () {
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Ball Puzzle");
+        RoundManager.Instance.OpenPuzzleScene(ballScene);
 
     }
 

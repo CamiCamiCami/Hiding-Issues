@@ -4,27 +4,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(Puzzle))]
 public class Room : MonoBehaviour
 {
 
     public int SecurityPercentage;
     public BoxCollider box;
-
-    private bool isPercentageRevealed = false;
-    private bool __reveal_next_iteration = false;
+    public Puzzle puzzle;
 
     // Start is called before the first frame update
     void Start()
     {
         box.isTrigger = true;
-        return;
+        puzzle = this.GetComponent<Puzzle>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         Player player = other.GetComponentInParent<Player>();
-
         if (player != null)
         {
             Debug.Log("poteadilla " + player.name);
@@ -34,7 +31,6 @@ public class Room : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log(other);
         Player player = other.GetComponentInParent<Player>();
 
         if (player != null)
@@ -45,36 +41,21 @@ public class Room : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (__reveal_next_iteration)
+        Player player = other.GetComponentInParent<Player>();
+        if (player != null)
         {
-            Player player = other.GetComponentInParent<Player>();
-            if (player != null)
-            {
-                player.UpdateRoom(this);
-                __reveal_next_iteration = false;
-            }
+            player.UpdateRoom(this);
         }
-    }
-
-    public void RevealSecurityPercentage()
-    {
-        isPercentageRevealed = true;
-        __reveal_next_iteration = true;
     }
 
     public int? GetSecurityPercentage()
     {
-        if (isPercentageRevealed)
+        if (puzzle != null && puzzle.isSolved)
         {
             return SecurityPercentage;
         } else
         {
             return null;
         }
-    }
-
-    public bool IsSecurityPercentageRevealed()
-    {
-        return isPercentageRevealed;
     }
 }

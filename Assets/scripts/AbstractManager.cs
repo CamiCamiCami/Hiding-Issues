@@ -22,7 +22,6 @@ public abstract class AbstractManager : MonoBehaviour
 
     static public void ChangeScene(AbstractManager save, SceneAsset load)
     {
-        GameManager.Instance.SaveData(save.GetSceneData());
-        UnityEngine.SceneManagement.SceneManager.LoadScene(load.name);
+        
     }
 }

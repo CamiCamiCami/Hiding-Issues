@@ -1722,6 +1722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SecurityPercentage: 0
   box: {fileID: 46742922}
+  puzzle: {fileID: 0}
 --- !u!1 &51305357
 GameObject:
   m_ObjectHideFlags: 0
@@ -2152,6 +2153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SecurityPercentage: 0
   box: {fileID: 54957019}
+  puzzle: {fileID: 0}
 --- !u!43 &55744435
 Mesh:
   m_ObjectHideFlags: 0
@@ -13909,6 +13911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58e375b3a90e13409188e577e62352f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballScene: {fileID: 102900000, guid: 213e8b8570186a241951fbc2d7b4813b, type: 3}
 --- !u!135 &379293984
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18626,6 +18629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SecurityPercentage: 0
   box: {fileID: 526808300}
+  puzzle: {fileID: 0}
 --- !u!65 &526808300
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21770,6 +21774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SecurityPercentage: 0
   box: {fileID: 680676862}
+  puzzle: {fileID: 0}
 --- !u!114 &680676864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21782,6 +21787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c044b7c76eef9d146bcfaaab96ac91fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSolved: 0
   Note: {fileID: 7400800379185776518}
   Stoves:
   - {fileID: 6005916012684179396}
@@ -27363,6 +27369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HidingTime: 1e+17
   Players: {fileID: 767572219}
+  Scene: {fileID: 1060665994}
   playerPrefab: {fileID: 8079983207871450898, guid: 7d1e8a7a3b9cbd34187eaabf0b2de5d2, type: 3}
 --- !u!4 &808282036
 Transform:
@@ -27762,6 +27769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SecurityPercentage: 0
   box: {fileID: 814887764}
+  puzzle: {fileID: 814887765}
 --- !u!65 &814887764
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27795,6 +27803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d9a7d28fc82594d917aa32890a5573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSolved: 0
   Scene: {fileID: 102900000, guid: 213e8b8570186a241951fbc2d7b4813b, type: 3}
   Ball: {fileID: 379293981}
 --- !u!43 &838152477
@@ -28036,6 +28045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SecurityPercentage: 0
   box: {fileID: 838940844}
+  puzzle: {fileID: 838940846}
 --- !u!114 &838940846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28048,6 +28058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c77e132691f2546ae49ca8c53bb7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSolved: 0
   ToiletModel: {fileID: 1588866186553347}
   SinkModel: {fileID: 1037693424091285}
   ShowerModel: {fileID: 1725890198904514}
@@ -33624,6 +33635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SecurityPercentage: 0
   box: {fileID: 1002702142}
+  puzzle: {fileID: 0}
 --- !u!65 &1002702142
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40421,6 +40433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SecurityPercentage: 0
   box: {fileID: 1179078266}
+  puzzle: {fileID: 0}
 --- !u!65 &1179078266
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40454,6 +40467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e229a8bb67f7d72b50ef478f05bff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSolved: 0
   Ligths:
   - {fileID: 590220402}
   - {fileID: 2029675410}
@@ -64604,6 +64618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SecurityPercentage: 0
   box: {fileID: 1845031230}
+  puzzle: {fileID: 0}
 --- !u!114 &1845031232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64616,6 +64631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f65d1aba4493644a8ec8bdea2ae0e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSolved: 0
   Minute: {fileID: 2075586652691726341}
   Hour: {fileID: 1897426538669819476}
   RequiredHour: 0
