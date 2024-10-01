@@ -12,6 +12,7 @@ public class PlayerLookAt : MonoBehaviour
     private Vector3 ScreenCentre;
     private PuzzleInteractable interactable = null;
     private Player player;
+    private bool canInteract = true;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,10 @@ public class PlayerLookAt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canInteract) 
+        { 
+            return;
+        }	
         Vector3 CameraCenter = CameraComponent.ScreenToWorldPoint(ScreenCentre);
         RaycastHit hit;
         if (Physics.Raycast(CameraCenter, CameraComponent.transform.forward, out hit, 10f) && hit.collider.gameObject.TryGetComponent<PuzzleInteractable>(out var interact))
@@ -57,6 +62,14 @@ public class PlayerLookAt : MonoBehaviour
         }
 
         interactable = other;
+    }
+
+    public void DisableInteraction() {
+        canInteract = false;
+    }
+
+    public void EnableInteraction() {
+        canInteract = true;
     }
 
 }

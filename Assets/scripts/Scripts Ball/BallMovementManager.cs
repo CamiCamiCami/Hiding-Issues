@@ -9,7 +9,7 @@ public class BallMovementManager : MonoBehaviour
 
     private Rigidbody rb;
     private float speed = 4f;
-    public GameObject camera;
+    public GameObject cameraObject;
 
     void Start()
     {

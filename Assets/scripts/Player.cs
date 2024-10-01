@@ -20,50 +20,59 @@ public class Player : MonoBehaviour
 
     public Character character;
 
-
     [Header("First Person Camera")]
-    public float SensibilityX = 250;
-    public float SensibilityY = 250;
+    public float Sensibility = 250;
 
     [Header("Player Movement")]
     public float Speed = 5f;
+    public float Gravity = 0.0f;
 
     [Header("Player Look At")]
     public Camera cam;
 
+
     private Room currentRoom;
     private PlayerOverlay overlay;
+    private PlayerCamera playerCamera;
+    private PlayerMovement playerMovement;
+    private PlayerLookAt playerLookAt;
     private bool hiding = false;
     private bool canHide = false;
+    private bool isLookingAtCanvas = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        //PlayerCamera cameraManager = this.AddComponent<PlayerCamera>();
-        //cameraManager.sensibilityX = SensibilityX;
-        //cameraManager.sensibilityY = SensibilityY;
-        //cameraManager.Camera = this.GetComponentInChildren<SnapCamera>().gameObject; //Agarra el snap que ata a la camara
-
-        PlayerMovement playerMovement = this.AddComponent<PlayerMovement>();
+        playerMovement = this.AddComponent<PlayerMovement>();
         playerMovement.Speed = Speed;
         playerMovement.cc = this.GetComponent<CharacterController>();
+        playerMovement.Gravity = this.Gravity;
+        playerMovement.DisableMovement();
 
-        PlayerLookAt playerLookAt = this.AddComponent<PlayerLookAt>();
+        playerLookAt = this.AddComponent<PlayerLookAt>();
         playerLookAt.CameraComponent = cam;
+        playerLookAt.DisableInteraction();
+
+        playerCamera = this.AddComponent<PlayerCamera>();
+        playerCamera.cameraTransform = cam.transform;
+        playerCamera.mouseSensitivity = Sensibility;
+        playerCamera.LockCamera();
 
         overlay = this.GetComponentInChildren<PlayerOverlay>();
+    }
 
-        return;
+    void Start()
+    {
+        playerMovement.EnableMovement();
+        playerLookAt.EnableInteraction();
+        playerCamera.FreeCamera();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //esto es para probar el reset
-        if(Input.GetKeyDown(KeyCode.M)) {
-            SceneManager.LoadScene("GameOver");
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+        if (isLookingAtCanvas && Input.GetKeyDown(KeyCode.Escape)) {
+            this.ExitCanvas();
         }
 
         if(canHide && Input.GetKeyDown(KeyCode.H)) 
@@ -84,7 +93,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Te escondess en " + currentRoom.name);
             hiding = true;
-            this.Immobilize();
+            StopMainPlayerInput();
             overlay.Fade();
             overlay.ResetHidePopUp();
         }
@@ -93,7 +102,7 @@ public class Player : MonoBehaviour
     void StopHiding()
     {
         hiding = false;
-        this.Mobilize();
+        RestoreMainPlayerInput();
         overlay.ResetFade();
         overlay.ShowHidePopUp();
     }
@@ -131,28 +140,6 @@ public class Player : MonoBehaviour
         return currentRoom;
     }
 
-    public void Immobilize()
-    {
-        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
-
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = false;  // Desactiva el movimiento
-            Debug.Log("Movimiento deshabilitado.");
-        }
-    }
-
-    public void Mobilize()
-    {
-        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
-
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = true;  // Activa nuevamente el movimiento
-            Debug.Log("Movimiento habilitado.");
-        }
-    }
-
     public void ShowHidePopUp()
     {
         this.overlay.ShowHidePopUp();
@@ -163,16 +150,46 @@ public class Player : MonoBehaviour
         this.overlay.ResetHidePopUp();
     }
 
-    public void CanHide()
+    public void EnableHide()
     {
         canHide = true;
         overlay.ShowHidePopUp();
     } 
 
-    public void CannotHide()
+    public void DisableHide()
     {
         canHide = false;
         overlay.ResetHidePopUp();
+    }
+
+    Canvas canvasLookingAt = null;
+    public void DisplayCanvas(Canvas canvas) {
+        StopMainPlayerInput();
+        isLookingAtCanvas = true;
+        canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        canvas.enabled = true;
+        canvasLookingAt = canvas;
+    }
+
+    private void ExitCanvas() {
+        RestoreMainPlayerInput();
+        isLookingAtCanvas = false;
+        canvasLookingAt.enabled = false;
+        canvasLookingAt = null;
+    }
+
+    private void StopMainPlayerInput()
+    {
+        playerCamera.LockCamera();
+        playerMovement.DisableMovement();
+        playerLookAt.DisableInteraction();
+    }
+
+    private void RestoreMainPlayerInput() 
+    {
+        playerCamera.FreeCamera();
+        playerMovement.EnableMovement();
+        playerLookAt.EnableInteraction();
     }
 
 }

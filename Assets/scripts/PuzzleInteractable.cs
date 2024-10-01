@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 
 [RequireComponent(typeof(Collider))]
 public class PuzzleInteractable : MonoBehaviour
@@ -9,11 +11,10 @@ public class PuzzleInteractable : MonoBehaviour
     public Puzzle ReportBackTo;
 
     private Outline outline;
-    private void Start()
+    private void Awake()
     {
         Color outlineColor = Color.white;
         float outlineWidth = 5f;
-
         outline = this.AddComponent<Outline>();
         outline.OutlineMode = Outline.Mode.OutlineVisible;
         outline.OutlineColor = outlineColor;

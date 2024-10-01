@@ -23,14 +23,15 @@ public class SecurityPercentageUI : MonoBehaviour
         text = this.AddComponent<TextMeshProUGUI>();
         text.text = "";
 
-        transform.anchorMin = Vector2.one;
-        transform.anchorMax = Vector2.one;
-        transform.pivot = new Vector2(1, 1);
+        transform.anchorMin = new Vector2(0, 1);
+        transform.anchorMax = new Vector2(0, 1);
+        transform.pivot = new Vector2(0, 1);
     }
 
     public void SetSecurityPercentage(int newPercentage)
     {
         text.text = newPercentage.ToString() + "%";
+        
     }
 
     public void VoidSecurityPercentage()

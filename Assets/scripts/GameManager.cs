@@ -1,70 +1,137 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using System.Reflection;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static AbstractManager;
 
-
-public class GameManager : MonoBehaviour
+public class GameManager : AbstractManager
 {
+    public static GameManager Instance { get; private set; }
 
-    public double HidingTime;
-    public GameObject Players;
-    private List<Player> PlayerList = new List<Player>();
-    private double RemainingTime;
-    private bool IsTimeOver;
 
-    // Start is called before the first frame update
-    void Start()
+    readonly GameManagerData gameData = new GameManagerData();
+
+    void Awake()
     {
-        RemainingTime = HidingTime;
-        IsTimeOver = false;
-        PlayerList = Players.GetComponentsInChildren<Player>().ToList();
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public T LoadData<T>()
     {
-        if (!IsTimeOver)
+        if (!typeof(T).IsSubclassOf(typeof(SceneData)))
         {
-            RemainingTime -= Time.deltaTime;
-            IsTimeOver = RemainingTime <= 0;
-        } else
-        {
-            EndOfRound();
-            // Temporal: Resetea la ronda
-            RemainingTime = HidingTime;
-            IsTimeOver = false;
+            Debug.LogError("LoadData fue llamado con un tipo invalido");
+            throw new ArgumentException("LoadData fue llamado con un tipo invalido");
         }
+
+        SceneData data = gameData.GetSceneData(typeof(T));
+        return (T)Convert.ChangeType(data, typeof(T));
+        
     }
 
-    void EndOfRound()
+    public void SaveData(SceneData sceneData)
     {
-        foreach (Player player in PlayerList)
+        //SceneData data = (SceneData)Convert.ChangeType(sceneData, typeof(SceneData));
+        gameData.SaveSceneData(sceneData);
+    }
+
+    public static void LoadGameManager()
+    {
+        const string name = "Game Manager";
+        GameObject gameManager = new GameObject(name, new Type[1] {typeof(GameManager)});
+        DontDestroyOnLoad(gameManager);
+    }
+
+    /* Metodos Heredados */
+
+    public override Type GetSceneDataType()
+    {
+        return typeof(GameManagerData);
+    }
+
+    public override SceneData GetSceneData()
+    {
+        throw new NotImplementedException();
+    }
+
+    /* Scene Data class */
+
+    private class GameManagerData : SceneData
+    {
+
+        /* Defaults Acá */
+        public int PlayerAmount = 1;
+        public (Vector3, Quaternion, Character)[] PlayersData = new (Vector3, Quaternion, Character)[1] {( new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0), Character.Emma)};
+        public string[] SolvedPuzzles = new string[0];
+
+
+        public override object Clone()
         {
-            if (!player.IsHiding())
+            Debug.LogError("No se debe clonar GameManagerData puesto que es unico");
+            throw new System.NotImplementedException();
+        }
+
+        public void SaveSceneData(SceneData data)
+        {
+            FieldInfo[] fields = data.GetType().GetFields();
+
+            foreach (FieldInfo field in fields)
             {
-                Debug.Log(player);
-            }
-            else
-            {
-                int securityPercentage = player.GetCurrentRoom().SecurityPercentage;
-                int randInt = (int)(Random.value * 100f);
-                bool dead = securityPercentage < randInt;
-                Debug.Log("Security = " + securityPercentage);
-                Debug.Log("Random = " + randInt);
-                if (dead) {
-                    Debug.Log(player + " ):");
-                }
-                else
-                {
-                    Debug.Log(player + " (:");
-                }
+                //Debug.Log($"Guardando field {field.Name} de {data.GetType().Name}");
+                SetField(this, data, field.Name);
             }
         }
-    }
 
-    bool SeAcaboElTiempoDeEscondite()
-    {
-        return IsTimeOver;
+        public SceneData GetSceneData(Type sceneDateType)
+        {
+            SceneData sceneData = (SceneData)Activator.CreateInstance(sceneDateType);
+            FieldInfo[] fields = sceneDateType.GetFields();
+
+            foreach (FieldInfo field in fields)
+            {
+                //Debug.Log($"Cargando field {field.Name} de {sceneDateType.Name}");
+                SetField(sceneData, this, field.Name);
+            }
+            return sceneData;
+        }
+
+        private static void SetField(object to, object from, string fieldName)
+        {
+            object value = GetPossiblyClonedValue(from, fieldName);
+            to.GetType().InvokeMember(fieldName, BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetField, Type.DefaultBinder, to, new object[1] { value });
+        }
+
+        private static object GetPossiblyClonedValue(object from, string fieldName) 
+        {
+            //Debug.Log($"Consiguiendo el valor posiblemente clonado de {fieldName}");
+            const string ClonableInterface = nameof(ICloneable);
+            FieldInfo field = from.GetType().GetField(fieldName);
+            Type fieldType = field.FieldType;
+            if (fieldType.GetInterface(ClonableInterface) != null)
+            {
+                //Debug.Log($"Devolviendo el valor clonado de {fieldName}");
+                ICloneable clonable = (ICloneable)field.GetValue(from);
+                return clonable.Clone();
+            } else
+            {
+                //Debug.Log($"Devolviendo el valor sin clonar de {fieldName}");
+                return field.GetValue(from);
+            }
+        }
+
+        public override string ToString()
+        {
+            string playerDataString = "[";
+            foreach ((Vector3 vector, Quaternion angle, Character character) in this.PlayersData)
+            {
+                playerDataString += $"(({vector.x}, {vector.y}, {vector.z}), ({angle.x}, {angle.y}, {angle.z}. {angle.w}), {character.ToString()}),";
+            }
+            playerDataString = playerDataString.TrimEnd(',') + "]";
+            return $"\n(Vector3, Quaternion, Character)[] PlayersData = {playerDataString}";
+        }
     }
 }
