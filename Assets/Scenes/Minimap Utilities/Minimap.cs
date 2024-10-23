@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
+    public GameObject player;
     public RectTransform playerInMap;
     public RectTransform map2dEnd;
     public Transform map3dParent;
@@ -13,8 +14,9 @@ public class Minimap : MonoBehaviour
 
     private void Update()
     {
+        player = GameObject.FindGameObjectWithTag("Jugador");
         normalized = Divide(
-                map3dParent.InverseTransformPoint(this.transform.position),
+                map3dParent.InverseTransformPoint(player.transform.position),
                 map3dEnd.position - map3dParent.position
             );
         normalized.y = normalized.z;

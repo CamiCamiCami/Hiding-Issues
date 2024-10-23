@@ -133,6 +133,7 @@ public class RoundManager : AbstractManager
             (Vector3 position, Quaternion rotation, Character character) = data.PlayersData[i];
             GameObject playerObject = Instantiate(playerPrefab, position, rotation, this.Players.transform);
             playerObject.name = playerObjectName + i;
+            playerObject.tag = "Jugador";
             Player player = playerObject.GetComponent<Player>();
             player.character = character;
             playerList.Add(player);

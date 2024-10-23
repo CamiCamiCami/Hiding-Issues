@@ -28,6 +28,8 @@ TagManager:
   - move
   - still
   - Boss
+  - Ligth
+  - Jugador
   layers:
   - Default
   - TransparentFX
