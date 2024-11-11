@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ball : MonoBehaviour
+public class Target : MonoBehaviour
 {
-    private bool thrown, holding;
     private bool swingBall = true;
     Rigidbody rb;
 
@@ -12,19 +11,15 @@ public class Ball : MonoBehaviour
     public float speed = 1.0f;
 
     [SerializeField]
-    public float thrownSpeed = 3.0f;
+    GameObject messageInABottle;
+
 
     private Transform target;
     private Transform finishTarget;
 
     private void Awake()
     {
-        var plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        plane.transform.localScale = new Vector3(1.0f, 0.5f, 0.5f);
-        finishTarget = plane.transform;
-        plane.transform.position = new Vector3(0.0f, 0.0f, 6.0f);
-        plane.SetActive(false);
-
+        messageInABottle.SetActive(false);
         // Create and position the cylinder. Reduce the size.
         var cylinder = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
         cylinder.transform.localScale = new Vector3(0.15f, 1.0f, 0.15f);
@@ -32,41 +27,34 @@ public class Ball : MonoBehaviour
 
         // Grab cylinder values and place on the target.
         target = cylinder.transform;
-        target.transform.position = new Vector3(3.5f, 0.5f, -5f);
+        target.transform.position = new Vector3(-3.5f, 0.75f, 5.34f);
     }
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        swingBall = true;
     }
 
-    private void OnMouseDown()
+
+    void OnCollisionEnter(Collision other)
     {
-        holding = true;
         swingBall = false;
-
+        messageInABottle.SetActive(true);
     }
 
-    private void OnMouseDrag()
+    void OnCollisionStay(Collision other)
     {
-        holding = true;
         swingBall = false;
+        messageInABottle.SetActive(true);
     }
+
 
     private void Update()
     {
         if (swingBall)
         {
-            Debug.Log("swingBall  " + swingBall);
             BallMoveTowards();
         }
-        else
-        {
-            ThrowBall();
-        }
-
-
     }
 
 
@@ -81,12 +69,5 @@ public class Ball : MonoBehaviour
             // Swap the position of the cylinder.
             target.position = new Vector3((-1.0f) * target.position.x, target.position.y, target.position.z);
         }
-    }
-
-    void ThrowBall()
-    {
-        var footStep = thrownSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, finishTarget.position, footStep);
-        target.position = new Vector3(target.position.x, 0.0f * target.position.y, target.position.z);
     }
 }
